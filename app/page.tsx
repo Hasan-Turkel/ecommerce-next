@@ -1,30 +1,23 @@
-import { log } from 'console';
-import Image from 'next/image'
+
+
 import { getProducts } from "@/helpers/getProducts";
+import Card from '@/components/Card';
+
+type item = { price: number; title: string; image: string }
+
 
 const Home = async () => {
 
-  const getProducts = async () => {
-    const URL = `https://fakestoreapi.com/products`;
-    const res = await fetch(URL);
-  
-    //? next.js ile fetch api çekilen verileri default olarak cache'ler. bu özelliği option objesi ile değiştirebiliriz
-    // const res = await fetch(URL, { cache: "force-cache" }); default
-    // const res = await fetch(URL, { cache: "no-store" }); cache'leme
-    //   const res = await fetch(URL, { next: { revalidate: 10 } }); belirli aralıklarla veriyi tekrar çek tekrar
-    if (!res.ok) {
-      // This will activate the closest `error.js` Error Boundary
-      throw new Error("Failed to fetch data");
-    }
-    const  results  = await res.json();
-    
-    return results;
-  };
-
-  const Products = await getProducts();
-  console.log(Products)
+  const products = await getProducts();
+  console.log(products)
   return (
-    <main className="m-4 row flex-wrap justify-content-center">
+    <main className="m-4 row flex-wrap justify-content-center gap-3">
+
+      {
+        products.map((item:item, i:number)=><Card key={i} item={item}/>)
+      }
+
+    
     </main>
   )
 }

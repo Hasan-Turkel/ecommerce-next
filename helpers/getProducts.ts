@@ -14,6 +14,6 @@ export const getProducts = async () => {
     // This will activate the closest `error.js` Error Boundary
     throw new Error("Failed to fetch data");
   }
-  const { results } = await res.json();
+  const  results  = await res.json();
   return results;
 };
