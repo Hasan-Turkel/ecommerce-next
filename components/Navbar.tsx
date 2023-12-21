@@ -3,11 +3,14 @@
 import Link from 'next/link'
 import React from 'react'
 import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import useAuthCalls from "../hooks/useAuthCalls"
 
 const Navbar = () => {
 
     
-const user = true
+  const {user} = useSelector((state:any)=>state.auth)
+  const { logout } = useAuthCalls()
 useEffect(() => {
   require("bootstrap/dist/js/bootstrap.bundle.min.js");
 }, []);
@@ -31,7 +34,7 @@ useEffect(() => {
       <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div className="navbar-nav d-flex justify-content-end gap-4 w-100 px-5">
             
-            {!user?(<Link className="nav-link text-white fs-4" aria-current="page" href="/my-box">
+            {!user?(<Link className="nav-link text-white fs-4" aria-current="page" href="/login">
             Login 
           </Link> ):
           ( <>
@@ -41,9 +44,9 @@ useEffect(() => {
         <Link className="nav-link text-white fs-4" href="/my-purchases">
           My Purchases 
         </Link>
-        <Link className="nav-link text-white fs-4" href="/my-purchases">
+        <button className="nav-link text-white fs-4" onClick={()=>logout()}>
          Logout
-        </Link>
+        </button>
         </>)}
             
         </div>

@@ -4,13 +4,14 @@ import axios from "axios"
 const useAxios = () => {
 
   const {token} = useSelector((state)=>state.auth)
+  const baseurl = process.env.NEXT_PUBLIC_baseurl;
   
 
   const axiosSimple = axios.create({
-    baseURL: `http://127.0.0.1:8000`
+    baseURL:`${baseurl}`
   })
   const axiosToken = axios.create({
-    baseURL: `${process.env.base_url}`,
+    baseURL: `${baseurl}`,
     headers: { Authorization: `Token ${token}` },
   })
 
