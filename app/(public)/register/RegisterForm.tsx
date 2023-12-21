@@ -1,9 +1,9 @@
 import { Formik, Form } from "formik";
 import { object, string } from "yup";
-// import useAuthCalls from "../hooks/useAuthCalls";
+import useAuthCalls from "../../../hooks/useAuthCalls";
 
 const RegisterForm = () => {
-//   const { register } = useAuthCalls();
+  const { register } = useAuthCalls();
   const loginSchema = object({
     email: string().email().required("Email is required"),
     password: string()
@@ -27,7 +27,7 @@ const RegisterForm = () => {
         }}
         validationSchema={loginSchema}
         onSubmit={(values, action) => {
-        //   register(values);
+          register(values);
           action.resetForm();
           action.setSubmitting(false);
         }}

@@ -1,11 +1,11 @@
 import React from "react";
 import { Formik, Form } from "formik";
 import { object, string } from "yup";
-// import useAuthCalls from "../../hooks/useAuthCalls";
+import useAuthCalls from "../../../hooks/useAuthCalls"
 import "./LoginForm.css"
 
 const LoginForm = () => {
-//   const { login } = useAuthCalls();
+  const { login } = useAuthCalls();
 
   const loginSchema = object({
     email: string().email().required("Email is required"),
@@ -25,7 +25,9 @@ const LoginForm = () => {
         initialValues={{ email: "", password: "" }}
         validationSchema={loginSchema}
         onSubmit={(values, action) => {
-        //   login(values);
+          login(values);
+          console.log(process.env.base_url);
+          
           action.resetForm();
           action.setSubmitting(false);
         }}
