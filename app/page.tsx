@@ -9,7 +9,7 @@ type item = { price: number; title: string; image: string }
 const Home = async () => {
 
   const products = await getProducts();
-  console.log(products)
+  // console.log(products)
   return (
     <main className="m-4 row flex-wrap justify-content-center gap-3">
 
