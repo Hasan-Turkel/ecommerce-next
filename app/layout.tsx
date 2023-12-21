@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import "bootstrap/dist/css/bootstrap.css";
 import StoreProvider from "./StoreProvider";
+import { CookiesProvider } from 'next-client-cookies/server';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,8 +23,10 @@ export default function RootLayout({
       <body className={inter.className}>
         <StoreProvider>
           {" "}
+          <CookiesProvider>
           <Navbar />
-          {children}
+      {children}
+    </CookiesProvider>
         </StoreProvider>
       </body>
     </html>

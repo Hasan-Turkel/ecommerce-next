@@ -26,8 +26,6 @@ const LoginForm = () => {
         validationSchema={loginSchema}
         onSubmit={(values, action) => {
           login(values);
-          console.log(process.env.baseurl);
-          
           action.resetForm();
           action.setSubmitting(false);
         }}

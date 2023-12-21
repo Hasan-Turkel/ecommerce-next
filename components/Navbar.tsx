@@ -6,10 +6,11 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import useAuthCalls from "../hooks/useAuthCalls"
 
+
 const Navbar = () => {
 
     
-  const {user} = useSelector((state:any)=>state.auth)
+ const {user} = useSelector((state:any)=>state.auth)
   const { logout } = useAuthCalls()
 useEffect(() => {
   require("bootstrap/dist/js/bootstrap.bundle.min.js");
