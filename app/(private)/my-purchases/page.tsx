@@ -5,7 +5,7 @@ import useAxios from "@/hooks/useAxios";
 import { useSelector } from "react-redux";
 
 
-const MyBox = () => {
+const MyPurchases = () => {
 
   const { axiosToken } = useAxios()
   const {user} = useSelector((state:any)=>state.auth)
@@ -53,4 +53,4 @@ const MyBox = () => {
   )
 }
 
-export default MyBox
+export default MyPurchases

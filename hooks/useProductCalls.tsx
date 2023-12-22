@@ -61,23 +61,10 @@ const useProductCalls = () => {
     //   toastErrorNotify(error.response.data.messsage)
     }
   };
-  const getPurchases = async () => {
-
-    try {
-      const { data } = await axiosToken.get(`/users/${user._id}`, 
-      );
-    //   toastSuccessNotify("The reservation has been created.")
-    // router.push("/my-reservations")
-      // console.log(data);
-      return data
-    } catch (error) {
-      // console.log(error.message);
-    //   toastErrorNotify(error.response.data.messsage)
-    }
-  };
 
 
-  return { updateReservation, sendReservation, cancelReservation, getPurchases };
+
+  return { updateReservation, sendReservation, cancelReservation };
 };
 
 export default useProductCalls;
