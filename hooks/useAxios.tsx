@@ -1,10 +1,12 @@
+"use client"
 import { useSelector } from "react-redux";
 import axios from "axios"
 
 const useAxios = () => {
 
-  const {token} = useSelector((state)=>state.auth)
+  const {token} = useSelector((state:any)=>state.auth)
   const baseurl = process.env.NEXT_PUBLIC_baseurl;
+  
   
 
   const axiosSimple = axios.create({

@@ -1,14 +1,17 @@
-
-import { useNavigate } from "react-router-dom";
+"use client"
+import { useRouter } from "next/navigation";
 // import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify"
 import useAxios from "./useAxios"
-const useReservationCalls = () => {
+import { useSelector } from "react-redux";
 
-    const navigate= useNavigate()
+const useProductCalls = () => {
+
+    const router = useRouter()
     const { axiosToken } = useAxios()
+    const {user} = useSelector((state:any)=>state.auth)
  
   
-  const updateReservation = async (values) => {
+  const updateReservation = async (values:any) => {
    
     try {
         const { data } = await axiosToken.put(`/reservations/${values.id}/`,values,
@@ -26,7 +29,7 @@ const useReservationCalls = () => {
     }
   };
 
-  const cancelReservation = async (id) => {
+  const cancelReservation = async (id:any) => {
    
     try {
         const { data } = await axiosToken.put(`/reservations/${id}/`,{situation:"canceled"},
@@ -45,14 +48,28 @@ const useReservationCalls = () => {
   };
 
 
-  const sendReservation = async (values) => {
+  const sendReservation = async (values:any) => {
 
     try {
       const { data } = await axiosToken.post(`/reservations`, values, 
       );
     //   toastSuccessNotify("The reservation has been created.")
-      navigate("/my-reservations")
+    router.push("/my-reservations")
       // console.log(data);
+    } catch (error) {
+      // console.log(error.message);
+    //   toastErrorNotify(error.response.data.messsage)
+    }
+  };
+  const getPurchases = async () => {
+
+    try {
+      const { data } = await axiosToken.get(`/users/${user._id}`, 
+      );
+    //   toastSuccessNotify("The reservation has been created.")
+    // router.push("/my-reservations")
+      // console.log(data);
+      return data
     } catch (error) {
       // console.log(error.message);
     //   toastErrorNotify(error.response.data.messsage)
@@ -60,7 +77,7 @@ const useReservationCalls = () => {
   };
 
 
-  return { updateReservation, sendReservation, cancelReservation };
+  return { updateReservation, sendReservation, cancelReservation, getPurchases };
 };
 
-export default useReservationCalls;
+export default useProductCalls;

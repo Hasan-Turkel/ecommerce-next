@@ -1,10 +1,9 @@
 
-
 import { getProducts } from "@/helpers/getProducts";
 import Card from '@/components/Card';
 
-type item = { price: number; title: string; image: string }
 
+type item = { price: number; title: string; image: string }
 
 const Home = async () => {
 
