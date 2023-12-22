@@ -9,52 +9,15 @@ const useProductCalls = () => {
     const router = useRouter()
     const { axiosToken } = useAxios()
     const {user} = useSelector((state:any)=>state.auth)
- 
-  
-  const updateReservation = async (values:any) => {
-   
-    try {
-        const { data } = await axiosToken.put(`/reservations/${values.id}/`,values,
-        );
-    //   toastSuccessNotify("The reservation has been updated.")
-     
-      console.log(values);
-      // console.log(id);
-      
-    } catch (error) {
-    //   console.log(error.message);
-      // console.log(id);
-    
-    //   toastErrorNotify(error.response.data.messsage)
-    }
-  };
-
-  const cancelReservation = async (id:any) => {
-   
-    try {
-        const { data } = await axiosToken.put(`/reservations/${id}/`,{situation:"canceled"},
-        );
-    //   toastSuccessNotify("The reservation has been canceled.")
-     
-      // console.log(data);
-      // console.log(id);
-      
-    } catch (error) {
-    //   console.log(error.message);
-      // console.log(id);
-    
-    //   toastErrorNotify(error.response.data.messsage)
-    }
-  };
 
 
-  const sendReservation = async (values:any) => {
+  const updateBox = async (values:any) => {
 
     try {
-      const { data } = await axiosToken.post(`/reservations`, values, 
+      const { data } = await axiosToken.put(`/users/${user._id}`, values, 
       );
     //   toastSuccessNotify("The reservation has been created.")
-    router.push("/my-reservations")
+    // router.push("/my-reservations")
       // console.log(data);
     } catch (error) {
       // console.log(error.message);
@@ -64,7 +27,7 @@ const useProductCalls = () => {
 
 
 
-  return { updateReservation, sendReservation, cancelReservation };
+  return {  updateBox };
 };
 
 export default useProductCalls;
