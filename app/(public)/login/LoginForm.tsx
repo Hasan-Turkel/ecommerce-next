@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import { Formik, Form } from "formik";
 import { object, string } from "yup";
@@ -20,7 +21,7 @@ const LoginForm = () => {
   });
 
   return (
-    <div className="container auth-form border bg-white p-3 rounded-5">
+    <div className="container auth-form  bg-white p-3 rounded-5">
       <Formik
         initialValues={{ email: "", password: "" }}
         validationSchema={loginSchema}

@@ -1,3 +1,5 @@
+"use client"
+
 import { Formik, Form } from "formik";
 import { object, string } from "yup";
 import useAuthCalls from "../../../hooks/useAuthCalls";

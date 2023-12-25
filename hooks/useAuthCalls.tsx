@@ -15,7 +15,7 @@ const useAuthCalls = () => {
   const { axiosSimple } = useAxios();
   const { axiosToken } = useAxios();
 
-  const login = async (values) => {
+  const login = async (values:any) => {
     dispatch(fetchStart());
     try {
       const { data } = await axiosSimple.post(`users/auth/login`, values);
@@ -30,7 +30,7 @@ const useAuthCalls = () => {
     }
   };
 
-  const register = async (values) => {
+  const register = async (values:any) => {
     dispatch(fetchStart());
     try {
       const { data } = await axiosSimple.post(`users/auth/register`, values);
