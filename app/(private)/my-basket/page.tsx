@@ -13,10 +13,7 @@ const MyBasket = () => {
   const router = useRouter();
   const { axiosToken } = useAxios();
   const { user } = useSelector((state: any) => state.auth);
-  const [products, setProducts] = useState([
-    { name: "saat", price: 100, piece: 2 },
-    { name: "saat", price: 100, piece: 3 },
-  ]);
+  const [products, setProducts] = useState([]);
   // console.log(values);
 
   const { updateBasket } = useProductCalls();
