@@ -1,17 +1,15 @@
 
-// import Footer from '../components/Footer';
-
-
 // import { useSelector } from "react-redux";
 import Link from "next/link";
 import RegisterForm from "./RegisterForm";
+import Footer from "@/components/Footer";
 
 const Register = () => {
-  // const props = "position-absolute bottom-0";
   // const { loading } = useSelector((state) => state.auth)
- 
-  
+
   return (
+
+    <>
     <main className="d-flex justify-content-center flex-column align-items-center">
     
         <RegisterForm />
@@ -26,6 +24,9 @@ const Register = () => {
         </h3>
         
   </main>
+  <Footer props="position-absolute bottom-0"/>
+
+  </>
    
   )
 }
