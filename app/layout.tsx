@@ -4,15 +4,15 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import "bootstrap/dist/css/bootstrap.css";
 import StoreProvider from "./StoreProvider";
-import { CookiesProvider } from 'next-client-cookies/server';
-import { Suspense } from 'react'
+import { CookiesProvider } from "next-client-cookies/server";
+import { Suspense } from "react";
 import Loading from "./loading";
+import { ToastContainer } from "react-toastify";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "E-Commerce",
-  
 };
 
 export default function RootLayout({
@@ -26,11 +26,13 @@ export default function RootLayout({
         <StoreProvider>
           {" "}
           <CookiesProvider>
-          <Navbar />
+            <Navbar />
 
-          <Suspense fallback={<Loading/>}> {children}</Suspense>
-     
-    </CookiesProvider>
+            <Suspense fallback={<Loading />}>
+              {" "}
+              {children} <ToastContainer />
+            </Suspense>
+          </CookiesProvider>
         </StoreProvider>
       </body>
     </html>

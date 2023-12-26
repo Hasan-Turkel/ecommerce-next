@@ -19,12 +19,10 @@ const MyPurchases = () => {
     try {
       const { data } = await axiosToken.get(`/users/${user._id}`, 
       );
-    //   toastSuccessNotify("The reservation has been created.")
       // console.log(data);
       setPurchases(data.data.purchases)
     } catch (error) {
       // console.log(error.message);
-    //   toastErrorNotify(error.response.data.messsage)
     }
   };
 
@@ -37,6 +35,8 @@ const MyPurchases = () => {
   return (
 
     <>
+
+    <h1 className="m-3">Hi {user.username}, here is your purchases.</h1>
     {!purchases?.length? (<EmptyPage description="There is nothing in your purchases."/>) : (<>
     <main className='pt-3' >
       {purchases?.reverse().map((item:any, i:number)=>( 

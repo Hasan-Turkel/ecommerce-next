@@ -28,12 +28,10 @@ const MyBasket = () => {
   const getProducts = async () => {
     try {
       const { data } = await axiosToken.get(`/users/${user._id}`);
-      //   toastSuccessNotify("The reservation has been created.")
       // console.log(data);
       setProducts(data.data.box);
     } catch (error) {
       // console.log(error.message);
-      //   toastErrorNotify(error.response.data.messsage)
     }
   };
 
@@ -50,6 +48,8 @@ const MyBasket = () => {
 
   return (
     <>
+
+    <h1 className="m-3">Hi {user.username}, here is your basket.</h1>
       {!products?.length ? (
         <EmptyPage description="There is nothing in your basket." />
       ) : ( <>

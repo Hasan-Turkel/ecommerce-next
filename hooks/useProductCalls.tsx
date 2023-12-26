@@ -1,6 +1,5 @@
 "use client";
-import { useRouter } from "next/navigation";
-// import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify"
+import { toastErrorNotify, toastSuccessNotify } from "@/helpers/ToastNotify";
 import useAxios from "./useAxios";
 import { useSelector } from "react-redux";
 
@@ -11,12 +10,23 @@ const useProductCalls = () => {
   const updateBasket = async (values: any) => {
     try {
       const { data } = await axiosToken.put(`/users/${user._id}`, values);
-      //   toastSuccessNotify("The reservation has been created.")
-      // router.push("/my-reservations")
+
+      let note=""
+
+      if(values.process=="add"){
+           note = "The product has been added."
+      }else if (values.process=="remove"){
+         note = "The product has been removed."
+      }else if (values.process=="delete"){
+         note = "The product has been deleted."
+      }else {
+        note = "The products have been bought succesfully.."
+      }
+        toastSuccessNotify(note)
       // console.log(data);
-    } catch (error) {
+    } catch (error:any) {
       // console.log(error.message);
-      //   toastErrorNotify(error.response.data.messsage)
+        toastErrorNotify(error.response.data.messsage)
     }
   };
 
