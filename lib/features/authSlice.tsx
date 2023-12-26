@@ -7,7 +7,7 @@ interface initialState {user: any | null, loading:boolean, error:boolean, token:
 
 
 const initialState:initialState = {
-    user: "currentUser",
+    user: null,
     loading: false,
     error: false, 
     token: null,
