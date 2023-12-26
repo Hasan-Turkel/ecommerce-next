@@ -17,7 +17,7 @@ const Register = () => {
           Have an account?{" "}
           <Link href="/login"
             className="text-danger nav-link"
-            role="button"
+            role="button" prefetch={false}
           >
             Login
           </Link>

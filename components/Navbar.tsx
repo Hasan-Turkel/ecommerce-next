@@ -36,6 +36,7 @@ const Navbar = () => {
                 className="nav-link text-white fs-4"
                 aria-current="page"
                 href="/login"
+                prefetch={false}
               >
                 Login
               </Link>

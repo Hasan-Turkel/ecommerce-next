@@ -22,7 +22,7 @@ const Login = () => {
             Don't you have an account?{" "}
             <Link href="register "
               className="text-danger nav-link"
-              role="button"
+              role="button" prefetch={false}
             >
               Register
             </Link>
