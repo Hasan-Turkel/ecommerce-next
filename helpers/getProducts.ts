@@ -3,9 +3,6 @@
 export const getProducts = async () => {
   const URL = `https://fakestoreapi.com/products`;
   const res = await fetch(URL);
-
-  
-  
   //? next.js ile fetch api çekilen verileri default olarak cache'ler. bu özelliği option objesi ile değiştirebiliriz
   // const res = await fetch(URL, { cache: "force-cache" }); default
   // const res = await fetch(URL, { cache: "no-store" }); cache'leme

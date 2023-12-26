@@ -49,8 +49,8 @@ const useAuthCalls = () => {
     try {
       const { data } = await axiosToken.get(`users/auth/logout`);
       dispatch(logoutSuccess());
-        toastSuccessNotify("Logout performed.")
       router.push("/");
+        toastSuccessNotify("Logout performed.")
     } catch (error) {
       // console.log(error.message);
       dispatch(fetchFail());

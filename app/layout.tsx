@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
 import Navbar from "@/components/Navbar";
 import "bootstrap/dist/css/bootstrap.css";
 import StoreProvider from "./StoreProvider";
@@ -9,7 +7,6 @@ import { Suspense } from "react";
 import Loading from "./loading";
 import { ToastContainer } from "react-toastify";
 
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "E-Commerce",

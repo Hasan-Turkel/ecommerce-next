@@ -49,7 +49,7 @@ const MyBasket = () => {
   return (
     <>
 
-    <h1 className="m-3">Hi {user.username}, here is your basket.</h1>
+    <h1 className="m-3">Hi {user?.username}, here is your basket.</h1>
       {!products?.length ? (
         <EmptyPage description="There is nothing in your basket." />
       ) : ( <>

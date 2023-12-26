@@ -45,10 +45,11 @@ const Navbar = () => {
                   className="nav-link text-white fs-4"
                   aria-current="page"
                   href="/my-basket"
+                  prefetch={false}
                 >
                   My Basket
                 </Link>
-                <Link className="nav-link text-white fs-4" href="/my-purchases">
+                <Link className="nav-link text-white fs-4" href="/my-purchases" prefetch={false}>
                   My Purchases
                 </Link>
                 <button

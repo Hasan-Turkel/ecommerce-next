@@ -17,7 +17,7 @@ const MyPurchases = () => {
   const getPurchases = async () => {
 
     try {
-      const { data } = await axiosToken.get(`/users/${user._id}`, 
+      const { data } = await axiosToken.get(`/users/${user?._id}`, 
       );
       // console.log(data);
       setPurchases(data.data.purchases)
@@ -36,7 +36,7 @@ const MyPurchases = () => {
 
     <>
 
-    <h1 className="m-3">Hi {user.username}, here is your purchases.</h1>
+    <h1 className="m-3">Hi {user?.username}, here is your purchases.</h1>
     {!purchases?.length? (<EmptyPage description="There is nothing in your purchases."/>) : (<>
     <main className='pt-3' >
       {purchases?.reverse().map((item:any, i:number)=>( 
