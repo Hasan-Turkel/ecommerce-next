@@ -21,7 +21,7 @@ const useProductCalls = () => {
       }else if (values.process=="delete"){
          note = "The product has been deleted."
       }else {
-        note = "The products have been bought succesfully.."
+        note = "The products have been bought succesfully."
       }
         toastSuccessNotify(note)
       // console.log(data);

@@ -24,6 +24,7 @@ const Card: React.FC<CardProps> = ({ item }) => {
         alt="img"
         width={"200px"}
         height={"200px"}
+        loading="lazy"
       />
       <h3>{item?.price} $</h3>
       <p>{item?.title.slice(0, 30)}...</p>
