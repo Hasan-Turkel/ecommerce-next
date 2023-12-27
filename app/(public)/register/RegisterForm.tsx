@@ -3,9 +3,12 @@
 import { Formik, Form } from "formik";
 import { object, string } from "yup";
 import useAuthCalls from "../../../hooks/useAuthCalls";
+import { useSelector } from "react-redux";
+import Loading from "@/app/loading";
 
 const RegisterForm = () => {
   const { register } = useAuthCalls();
+  const { loading } = useSelector((state: any) => state.auth)
   const loginSchema = object({
     email: string().email().required("Email is required"),
     password: string()
@@ -19,8 +22,8 @@ const RegisterForm = () => {
     username: string().required("Username is required."),
   });
 
-  return (
-    <div className="container auth-form bg-white p-3 rounded-5">
+  return (<>
+  {loading?<Loading/>:  <div className="container auth-form bg-white p-3 rounded-5">
       <Formik
         initialValues={{
           username: "",
@@ -93,7 +96,11 @@ const RegisterForm = () => {
           </Form>
         )}
       </Formik>
-    </div>
+    </div>}
+  </>
+
+
+  
   );
 };
 

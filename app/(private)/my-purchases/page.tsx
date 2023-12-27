@@ -2,26 +2,37 @@
 
 import { useEffect, useState } from "react";
 import useAxios from "@/hooks/useAxios";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import EmptyPage from "@/components/EmptyPage";
 import Footer from "@/components/Footer";
+import Loading from "@/app/loading";
+import {
+  fetchFail,
+  fetchStart,
+ fetchSuccess
+} from "../../../lib/features/authSlice";
+
 
 
 const MyPurchases = () => {
 
   const { axiosToken } = useAxios()
-  const {user} = useSelector((state:any)=>state.auth)
+  const {user, loading} = useSelector((state:any)=>state.auth)
+  const dispatch = useDispatch();
   const [purchases, setPurchases] = useState([]);
   const props = purchases.length>1?"":"position-absolute bottom-0"
 
   const getPurchases = async () => {
-
+    dispatch(fetchStart())
     try {
+      
       const { data } = await axiosToken.get(`/users/${user?._id}`, 
       );
       // console.log(data);
       setPurchases(data.data.purchases)
+      dispatch(fetchSuccess())
     } catch (error) {
+      dispatch(fetchFail())
       // console.log(error.message);
     }
   };
@@ -37,7 +48,7 @@ const MyPurchases = () => {
     <>
 
     <h1 className="m-3">Hi {user?.username}, here is your purchases.</h1>
-    {!purchases?.length? (<EmptyPage description="There is nothing in your purchases."/>) : (<>
+    {loading?<Loading/>:!purchases?.length? (<EmptyPage description="There is nothing in your purchases."/>) : (<>
     <main className='pt-3' >
       {purchases?.reverse().map((item:any, i:number)=>( 
         <div key={i} className="mx-4 mb-3 p-3 border rounded-5 shadow-lg bg-white" style={{width:"20rem"}}>

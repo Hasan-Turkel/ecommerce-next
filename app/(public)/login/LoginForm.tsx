@@ -4,9 +4,12 @@ import { Formik, Form } from "formik";
 import { object, string } from "yup";
 import useAuthCalls from "../../../hooks/useAuthCalls"
 import "./LoginForm.css"
+import { useSelector } from "react-redux";
+import Loading from "@/app/loading";
 
 const LoginForm = () => {
   const { login } = useAuthCalls();
+  const { loading } = useSelector((state: any) => state.auth)
 
   const loginSchema = object({
     email: string().email().required("Email is required"),
@@ -20,8 +23,8 @@ const LoginForm = () => {
       .matches(/[!,?{}><%&$#£+-.]+/, "Password must contain custom character."),
   });
 
-  return (
-    <div className="container auth-form  bg-white p-3 rounded-5">
+  return ( <>
+  {loading?<Loading/>: <div className="container auth-form  bg-white p-3 rounded-5">
       <Formik
         initialValues={{ email: "", password: "" }}
         validationSchema={loginSchema}
@@ -78,7 +81,12 @@ const LoginForm = () => {
           </Form>
         )}
       </Formik>
-    </div>
+    </div>}
+  
+  </>
+
+    
+   
   );
 };
 

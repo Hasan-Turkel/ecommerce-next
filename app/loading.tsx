@@ -1,14 +1,23 @@
-import Skeleton from 'react-loading-skeleton'
-import 'react-loading-skeleton/dist/skeleton.css'
+"use client"
+
+import { Hourglass } from 'react-loader-spinner'
 
 
 export default function Loading() {
-    // You can add any UI inside Loading, including a Skeleton.
+   
     return <>
 
-    <div className='mx-4 mb-3 p-3 border rounded-5 shadow-lg bg-white'>
+    <div className='text-center m-5'>
 
-    <Skeleton count={5} />
+    <Hourglass
+  visible={true}
+  height="80"
+  width="80"
+  ariaLabel="hourglass-loading"
+  wrapperStyle={{}}
+  wrapperClass=""
+  colors={['#306cce', '#72a1ed']}
+  />
 
 
     </div>

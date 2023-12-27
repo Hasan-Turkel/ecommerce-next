@@ -2,17 +2,18 @@
 
 import { useEffect, useState } from "react";
 import useAxios from "@/hooks/useAxios";
-import { useSelector } from "react-redux";
+import { useSelector} from "react-redux";
 import Link from "next/link";
 import useProductCalls from "@/hooks/useProductCalls";
 import { useRouter } from "next/navigation";
 import EmptyPage from "@/components/EmptyPage";
 import Footer from "@/components/Footer";
+import Loading from "@/app/loading";
 
 const MyBasket = () => {
   const router = useRouter();
   const { axiosToken } = useAxios();
-  const { user } = useSelector((state: any) => state.auth);
+  const { user, loading } = useSelector((state: any) => state.auth);
   const [products, setProducts] = useState([]);
   // console.log(values);
 
@@ -50,7 +51,7 @@ const MyBasket = () => {
     <>
 
     <h1 className="m-3">Hi {user?.username}, here is your basket.</h1>
-      {!products?.length ? (
+      {loading?<Loading/>:!products?.length ? (
         <EmptyPage description="There is nothing in your basket." />
       ) : ( <>
         <main className="pt-3">

@@ -8,7 +8,7 @@ import {
   logoutSuccess,
 } from "../lib/features/authSlice";
 import useAxios from "./useAxios";
-import { toastErrorNotify, toastSuccessNotify } from "@/helpers/ToastNotify";
+import { toastErrorNotify, toastSuccessNotify, toastWarnNotify } from "@/helpers/ToastNotify";
 const useAuthCalls = () => {
   const dispatch = useDispatch();
   const router = useRouter();
@@ -16,6 +16,7 @@ const useAuthCalls = () => {
   const { axiosToken } = useAxios();
 
   const login = async (values:any) => {
+    toastWarnNotify("Login performing")
     dispatch(fetchStart());
     try {
       const { data } = await axiosSimple.post(`users/auth/login`, values);
@@ -31,6 +32,7 @@ const useAuthCalls = () => {
   };
 
   const register = async (values:any) => {
+    toastWarnNotify("Register performing")
     dispatch(fetchStart());
     try {
       const { data } = await axiosSimple.post(`users/auth/register`, values);
@@ -45,6 +47,7 @@ const useAuthCalls = () => {
     }
   };
   const logout = async () => {
+    toastWarnNotify("Logout performing")
     dispatch(fetchStart());
     try {
       const { data } = await axiosToken.get(`users/auth/logout`);
