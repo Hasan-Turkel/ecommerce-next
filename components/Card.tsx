@@ -1,6 +1,8 @@
 "use client";
 import React from "react";
 import useProductCalls from "@/hooks/useProductCalls";
+import { useSelector } from "react-redux";
+import { useRouter } from "next/navigation";
 
 interface CardProps {
   item: {
@@ -15,6 +17,8 @@ const Card: React.FC<CardProps> = ({ item }) => {
   // console.log(values);
 
   const { updateBasket } = useProductCalls();
+  const { user } = useSelector((state: any) => state.auth);
+  const router = useRouter();
 
   return (
     <div className="col-lg-3 col-md-6 text-center border rounded-5 p-2">
@@ -28,7 +32,7 @@ const Card: React.FC<CardProps> = ({ item }) => {
       />
       <h3>{item?.price} $</h3>
       <p>{item?.title.slice(0, 30)}...</p>
-      <button className=" btn btn-primary" onClick={() => updateBasket(values)}>
+      <button className=" btn btn-primary" onClick={user?() => updateBasket(values):router.push("/login")}>
         Add to Basket
       </button>
     </div>
