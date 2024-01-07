@@ -32,7 +32,7 @@ const Card: React.FC<CardProps> = ({ item }) => {
       />
       <h3>{item?.price} $</h3>
       <p>{item?.title.slice(0, 30)}...</p>
-      <button className=" btn btn-primary" onClick={user?() => updateBasket(values):router.push("/login")}>
+      <button className=" btn btn-primary" onClick={() => user?updateBasket(values):router.push("/login")}>
         Add to Basket
       </button>
     </div>
